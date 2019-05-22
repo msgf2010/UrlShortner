@@ -1,0 +1,30 @@
+﻿@using UrlShortner.Data;
+@using UrlShortner.Web.Models;
+@model UrlViewModel
+
+<h3>@Model.UserName Shortened Urls:</h3>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>Orginal Url</td>
+            <td>Shortened Url</td>
+            <td>Views</td>
+        </tr>
+        @foreach (Url u in Model.Urls)
+        {
+            <tr>
+                <td>
+                    <a target="_blank" href="@u.UrlOriginal">
+                        @u.UrlOriginal
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="/urlredirect/@u.UrlShortened">
+                        @u.UrlShortened
+                    </a>
+                </td>
+                <td>@u.Views</td>
+            </tr>
+        }
+    </table>
+</div>
